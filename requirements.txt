@@ -1,0 +1,8 @@
+openai
+sounddevice
+soundfile
+numpy
+gTTS
+python-dotenv
+flask
+flask-cors

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗣️ Assistente de Voz Multi-Idiomas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🗣️ Assistente de Voz Multi-Idiomas</h1>
+            <p class="subtitle">Powered by Whisper, ChatGPT & gTTS</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Seção de Configuração -->
+            <section class="config-section">
+                <label for="language-select">Idioma:</label>
+                <select id="language-select">
+                    <option value="pt">Português (PT)</option>
+                    <option value="en">English (EN)</option>
+                    <option value="es">Español (ES)</option>
+                    <option value="fr">Français (FR)</option>
+                    <option value="de">Deutsch (DE)</option>
+                </select>
+            </section>
+
+            <!-- Seção de Gravação de Áudio -->
+            <section class="recording-section">
+                <h2>Gravação de Áudio</h2>
+                <div class="button-group">
+                    <button id="record-btn" class="btn btn-primary">🎤 Iniciar Gravação</button>
+                    <button id="stop-btn" class="btn btn-danger" disabled>⏹️ Parar Gravação</button>
+                </div>
+                <div id="recording-status" class="status-message"></div>
+            </section>
+
+            <!-- Seção de Transcrição -->
+            <section class="transcription-section">
+                <h2>Transcrição</h2>
+                <div id="transcription-output" class="output-box">
+                    <p class="placeholder">A transcrição aparecerá aqui...</p>
+                </div>
+            </section>
+
+            <!-- Seção de Resposta do ChatGPT -->
+            <section class="response-section">
+                <h2>Resposta do Assistente</h2>
+                <div id="response-output" class="output-box">
+                    <p class="placeholder">A resposta do assistente aparecerá aqui...</p>
+                </div>
+            </section>
+
+            <!-- Seção de Áudio de Resposta -->
+            <section class="audio-response-section">
+                <h2>Reprodução de Áudio</h2>
+                <div id="audio-player" class="audio-player">
+                    <audio id="response-audio" controls>
+                        <source src="" type="audio/mpeg">
+                        Seu navegador não suporta o elemento de áudio.
+                    </audio>
+                </div>
+            </section>
+
+            <!-- Seção de Histórico -->
+            <section class="history-section">
+                <h2>Histórico de Conversas</h2>
+                <button id="clear-history-btn" class="btn btn-secondary">🗑️ Limpar Histórico</button>
+                <div id="history-output" class="history-box">
+                    <p class="placeholder">O histórico de conversas aparecerá aqui...</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Desenvolvido com ❤️ para o Desafio DIO | Assistente de Voz Multi-Idiomas</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

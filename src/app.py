@@ -90,6 +90,26 @@ def chat():
 
 @app.route('/api/synthesize', methods=['POST'])
 def synthesize():
+    try:
+        data = request.get_json()
+        text = data.get('text')
+        language = data.get('language', 'pt')
+
+        if not text:
+            return jsonify({'error': 'Texto não fornecido'}), 400
+
+        output_dir = os.path.join(app.static_folder, 'audio')
+        os.makedirs(output_dir, exist_ok=True)
+
+        output_filename = 'response_audio.mp3'
+        output_path = os.path.join(output_dir, output_filename)
+
+        synthesize_speech(text, lang=language, output_filename=output_path)
+
+        return jsonify({'audio_file': f'/static/audio/{output_filename}'}), 200
+
+    except Exception as e:
+        return jsonify({'error': f'Erro no servidor: {str(e)}'}), 500
     """
     Endpoint para sintetizar texto em voz.
     Recebe um texto e retorna um arquivo de áudio.
